@@ -29,3 +29,9 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# md files
+coach-2-website-prompt.md
+
+# extra
+screenshots/
