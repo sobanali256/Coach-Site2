@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +19,8 @@
   --color-marquee-bg: 28 43 26; /* #1C2B1A */
   --color-marquee-text: 245 242 236; /* #F5F2EC */
   --color-marquee-accent: 168 217 108; /* #A8D96C */
+  --font-bricolage: 'Bricolage Grotesque', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
 @layer base {

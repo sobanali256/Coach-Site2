@@ -2,10 +2,10 @@ import {
   Target,
   Compass,
   Users,
-  Phone,
-  Map,
-  Calendar,
-  TrendingUp,
+  Sparkles,
+  Route,
+  Workflow,
+  Trophy,
 } from "lucide-react";
 import type {
   NavLink,
@@ -194,28 +194,28 @@ export const PROCESS_STEPS: ProcessStep[] = [
     title: "Clarity Call",
     description:
       "Free 45-min session. We map where you are and where you want to go.",
-    icon: Phone,
+    icon: Sparkles,
   },
   {
     number: "02",
     title: "Custom Roadmap",
     description:
       "You receive a bespoke coaching plan built around your goals and timeline.",
-    icon: Map,
+    icon: Route,
   },
   {
     number: "03",
     title: "Weekly Sessions",
     description:
       "Deep, structured 60-min sessions with accountability between them.",
-    icon: Calendar,
+    icon: Workflow,
   },
   {
     number: "04",
     title: "Measurable Results",
     description:
       "We track outcomes against your defined goals. No vague transformations.",
-    icon: TrendingUp,
+    icon: Trophy,
   },
 ];
 

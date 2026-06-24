@@ -21,7 +21,7 @@ export default function SplitHeadline({
 }: SplitHeadlineProps) {
   return (
     <Tag
-      className={`whitespace-pre-line break-words font-display font-extrabold text-ink leading-[0.95] ${className}`}
+      className={`whitespace-pre-line break-normal font-display font-extrabold text-ink leading-[0.95] ${className}`}
     >
       {parts.map((part, i) => (
         <span

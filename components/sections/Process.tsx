@@ -30,18 +30,18 @@ export default function Process() {
                   as="li"
                   key={step.number}
                   delay={i * 0.1}
-                  className="relative overflow-hidden rounded-2xl border border-border bg-bg p-8"
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-bg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-accent/30"
                 >
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-2 -top-4 font-display font-extrabold text-accent-alt opacity-15"
+                    className="pointer-events-none absolute -right-2 -top-4 font-display font-extrabold text-accent-alt opacity-15 transition-opacity duration-300 group-hover:opacity-25"
                     style={{ fontSize: "clamp(4rem, 6vw, 6rem)" }}
                   >
                     {step.number}
                   </span>
-                  <span className="relative w-fit rounded-xl bg-surface p-3">
-                    <Icon className="h-6 w-6 text-accent" aria-hidden="true" />
-                  </span>
+                  <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 border border-accent/20 text-accent transition-all duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:text-white">
+                    <Icon className="h-7 w-7 transition-colors duration-300" strokeWidth={1.75} aria-hidden="true" />
+                  </div>
                   <h3 className="relative mt-6 font-display text-title font-semibold text-ink">
                     {step.title}
                   </h3>

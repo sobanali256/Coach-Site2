@@ -18,6 +18,23 @@ export default function Navbar() {
   const reduce = useReducedMotion();
   const drawerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 100 && currentScrollY > lastScrollY.current) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close the drawer on route change.
   useEffect(() => {
@@ -60,10 +77,18 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-bg/90 backdrop-blur-md">
+      <motion.header
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: -100, opacity: 0 },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="sticky top-4 z-50 mx-auto max-w-5xl w-[calc(100%-2rem)] rounded-full border border-border/80 bg-bg/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+      >
       <nav
         aria-label="Main navigation"
-        className="container-content flex items-center justify-between py-4"
+        className="flex items-center justify-between px-6 py-3"
       >
         {/* Logo */}
         <Link href="/" className="group leading-none" aria-label="Meridian Coaching home">
@@ -73,8 +98,8 @@ export default function Navbar() {
           <span className="block text-xs text-ink-muted">Coaching</span>
         </Link>
 
-        {/* Center nav pill — desktop only */}
-        <div className="hidden items-center gap-1 rounded-full border border-border bg-surface px-2 py-1.5 md:flex">
+        {/* Center nav links with Framer Motion active indicator */}
+        <div className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => {
             const active = isActive(pathname, link.href);
             return (
@@ -82,13 +107,20 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 ${
+                className={`relative rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200 ${
                   active
-                    ? "text-accent"
-                    : "text-ink-muted hover:text-ink"
+                    ? "text-accent font-semibold"
+                    : "text-ink-muted hover:text-accent"
                 }`}
               >
-                {link.label}
+                {active && (
+                  <motion.span
+                    layoutId="activeNavTab"
+                    className="absolute inset-0 rounded-full bg-accent/10 border border-accent/20"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
               </Link>
             );
           })}
@@ -120,7 +152,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-      </header>
+      </motion.header>
 
       {/* Mobile drawer — rendered outside the backdrop-blurred header so its
           position: fixed resolves against the viewport, not the header box. */}

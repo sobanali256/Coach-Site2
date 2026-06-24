@@ -28,7 +28,7 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        display: ["clamp(2.25rem, 7vw, 6.5rem)", { lineHeight: "0.95" }],
+        display: ["clamp(2.25rem, 5.5vw, 5.5rem)", { lineHeight: "0.95" }],
         hero: ["clamp(1.875rem, 5vw, 4.5rem)", { lineHeight: "1.02" }],
         title: ["clamp(1.5rem, 3vw, 2.25rem)", { lineHeight: "1.15" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7" }],

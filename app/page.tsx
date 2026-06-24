@@ -8,6 +8,7 @@ import CaseStudies from "@/components/sections/CaseStudies";
 import Process from "@/components/sections/Process";
 import Testimonials from "@/components/sections/Testimonials";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Pricing from "@/components/sections/Pricing";
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
       <CaseStudies />
       <Process />
       <Testimonials />
+      <Pricing />
       <FinalCTA />
     </>
   );
